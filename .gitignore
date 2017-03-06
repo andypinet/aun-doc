@@ -1,0 +1,5 @@
+debug.log
+.vscode
+.idea
+node_modules
+dist/*.md
