@@ -1,0 +1,70 @@
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  &__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+@mixin response-image() {
+    background-color: #ccc;       
+    &:before {
+        background-color: #ccc;        
+        color: #000;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        content: attr(data-alt)
+    }
+    &__content { 
+        background-color: transparent;
+    }
+    @content;
+}
+
+img {
+    border: 0;
+}
+img:not([src]) {
+    visibility: hidden;
+}
+
+/* Fixes Firefox anomaly during image load */
+@-moz-document url-prefix() {
+    img:-moz-loading {
+        visibility: hidden;
+    }
+}
+
+.aun-image {
+    display: block;    
+    width: 100%;
+}
+
+.sixteen-nine {
+    @include aspect-ratio(16, 9);
+}
+
+.response-image {
+    @include response-image() {
+        &__content { 
+            > img {
+                background-color: transparent;
+            }
+        }
+    }   
+}

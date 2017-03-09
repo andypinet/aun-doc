@@ -1,0 +1,20 @@
+{
+  "name": "dist",
+  "homepage": "https://github.com/andypinet/aun-doc",
+  "authors": [
+    "andypinet <lbc19920631@163.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "vanilla-lazyload": "^4.0.4"
+  }
+}

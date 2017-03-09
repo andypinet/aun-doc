@@ -1,11 +1,16 @@
 {% import "../aun/forms.twig" as forms %}
-## message
+{% import "../aun/link.twig" as link %}
+## 首页当然要放UI啦
 
-### sds
+{{ link.a("/2017.3/README", "3月") }}
 
-#### 是多少
+<div style="height: 1200px;"></div>
 
-{{ forms.input('username') }}
+<div class="sixteen-nine response-image">
+  <div class="sixteen-nine__content response-image__content" data-alt="nice">
+    <img class="aun-image" alt="Stivaletti" data-original="//i1.piimg.com/567571/ad514d36179316aa.jpg">
+  </div>
+</div>
 
 {% embed "../aun/code.twig" %}
 {% block content %}
@@ -19,4 +24,4 @@ teaser box
 Some content for the left teaser box{% endblock %}
 {% endembed %}
 
-sds
+<div style="height: 1200px;"></div>

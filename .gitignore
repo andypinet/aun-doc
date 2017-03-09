@@ -2,4 +2,6 @@ debug.log
 .vscode
 .idea
 node_modules
-dist/*.md
+dist/**/*.md
+dist/bower_components
+.sass-cache
