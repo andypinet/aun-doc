@@ -15,7 +15,9 @@
     "gulp-autoprefixer": "^3.1.1",
     "gulp-rename": "^1.2.2",
     "gulp-ruby-sass": "^2.1.1",
-    "gulp-twig": "^0.7.0"
+    "gulp-twig": "^0.7.0",
+    "js-yaml": "^3.8.2",
+    "through2": "^2.0.3"
   },
   "dependencies": {
     "gulp": "^3.9.1"
