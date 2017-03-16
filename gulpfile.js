@@ -5,9 +5,18 @@ var sass = require('gulp-ruby-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var through = require('through2'); 
 var yaml = require('js-yaml');
+var config = require('./config');
+
+if (!config.docsrc) {
+  throw new Error("you need set config.docsrc");
+}
+
+function location(realtivepath) {
+  return config.docsrc + "/" + realtivepath;
+}
 
 gulp.task('templates', function() {
-  gulp.src('./src/**/*.twig')
+  gulp.src(location('**/*.twig'))
     .pipe(twig())
     .pipe(rename(function(path) {
       path.extname = ".md"
@@ -16,11 +25,11 @@ gulp.task('templates', function() {
 });
 
 gulp.task('watch-tpl', function() {
-  gulp.watch('./src/**/*.twig', ['templates']);
+  gulp.watch(location('**/*.twig'), ['templates']);
 });
 
 gulp.task('sass', () =>
-    sass('src/style.scss')
+    sass(location('style.css'))
         .on('error', sass.logError)
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
@@ -28,6 +37,10 @@ gulp.task('sass', () =>
         }))        
         .pipe(gulp.dest('dist'))
 );
+
+gulp.task('watch-sass', () => {
+  gulp.watch(location('style.css'), ['sass']);
+});
 
 var globalSearch = [];
 
