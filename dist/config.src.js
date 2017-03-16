@@ -1,13 +1,4 @@
-var config = function() {
-    return {
-        nav: [
-          {title: '2017', type: 'dropdown', items: [
-            {title: '3月', path: '/2017.3/README'}
-          ]}
-        ]
-    }
-};
-
+@{nav}
 
 self.$config = Object.assign({
   debug: true,

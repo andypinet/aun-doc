@@ -6,6 +6,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var through = require('through2'); 
 var yaml = require('js-yaml');
 var config = require('./config');
+var fs = require('fs');
 
 if (!config.docsrc) {
   throw new Error("you need set config.docsrc");
@@ -40,6 +41,17 @@ gulp.task('sass', () =>
 
 gulp.task('watch-sass', () => {
   gulp.watch(location('style.css'), ['sass']);
+});
+
+gulp.task('build-config', () => {
+  var file = fs.readFileSync('dist/config.src.js');
+  var nav = fs.readFileSync(location("config.js"));
+  var outputfile = file.toString().replace("@{nav}", nav.toString());
+  fs.writeFileSync("dist/config.js", outputfile);
+});
+
+gulp.task('watch-config', () => {
+  gulp.watch(location("config.js"), ['build-config']);
 });
 
 var globalSearch = [];
