@@ -4,4 +4,5 @@ debug.log
 node_modules
 dist/**/*.md
 dist/bower_components
+dist/config.js
 .sass-cache
