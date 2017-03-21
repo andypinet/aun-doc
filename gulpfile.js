@@ -30,7 +30,7 @@ gulp.task('watch-tpl', function() {
 });
 
 gulp.task('sass', () =>
-    sass(location('style.css'))
+    sass(location('style.scss'))
         .on('error', sass.logError)
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
@@ -40,7 +40,7 @@ gulp.task('sass', () =>
 );
 
 gulp.task('watch-sass', () => {
-  gulp.watch(location('style.css'), ['sass']);
+  gulp.watch(location('style.scss'), ['sass']);
 });
 
 gulp.task('build-config', () => {
