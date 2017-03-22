@@ -67,7 +67,7 @@ var handlerSearch = function() {
       globalSearch.push(Object.assign({
         relativePath: path.replace(file.base, '')
       }, yaml.load(def)));
-      console.dir(globalSearch);
+      fs.writeFileSync("dist/search.json", JSON.stringify(globalSearch));
     }
   }
 

@@ -10,18 +10,19 @@ self.$config = Object.assign({
       // context....
       var ret = {
         template: `<div id="search" :class='{"focus": isFocus}'><input type="text" v-model="handlerValue" @focus="handlerFocus" /><div id="searchwords" class="datalist">
-  <div class="datalist__item" v-for="(item, index) in searchwords" @click="handleClick" :data-index="index"><span>{{item}}</span></div>
+  <div class="datalist__item" v-for="(item, index) in searchwords" @click="handleClick" :data-index="index">
+  <a class="datalist__link" :href="item.relativePath">{{item.title}}</a></div>
 </div></div>`,
         data() {
           var self = this;
-          setTimeout(function() {
-            console.dir(self);
-            self.searchwords = [
-              "Chrome",
-              "Firefox",
-              "Safari"
-            ]
-          }, 3000);
+          fetch("./search.json").then(function(response) {
+            return response.json()
+          }).then(function(data) {
+            self.searchwords = data.map(function(v) {
+              v.relativePath = "#/" + v.relativePath;
+              return v;
+            });
+          })
           return {
             isFocus: false,
             handlerValue: "",
@@ -35,8 +36,10 @@ self.$config = Object.assign({
               document.querySelector("#searchwords").removeAttribute("style");
             },
             handleClick: function(e) {
-              this.isFocus = false;
-              this.handlerValue = this.searchwords[e.target.getAttribute("data-index")];            
+              var self = this;
+              setTimeout(function() {
+                self.isFocus = false;
+              }, 0);
             },
             fetchWords: function(searchwords) {
               console.dir(ret);
