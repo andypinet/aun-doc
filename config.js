@@ -1,3 +1,3 @@
 module.exports = {
-    docsrc: ""
+    docsrc: "/Users/tongguwei/frontprojects/my-blog/src"
 };
